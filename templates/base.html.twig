@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="YESSAD Mohamed">
+    <meta name="description" content="Passionné de numérique, je me suis formé en autodidacte sur les langages web depuis plusieurs années.</br> Actuellement en formation de développeur web, je suis en 
+    stage de deux mois dans l’accessibilité numérique  (Janvier/février 2019).">    
+    <title>{% block title %}YESSAD Mohamed !{% endblock %}</title>  
+    <!-- CSS  -->
+    <link href="{{ asset ('build/css/materialize.css') }}" rel="stylesheet" media="screen,projection" />
+    <!-- Font Awesome -->
+    <link href="{{ asset ('build/css/font-awesome.css') }}" rel="stylesheet" />
+    <!-- Skill Progress Bar -->
+    <link href="{{ asset ('build/css/pro-bars.css') }}" rel="stylesheet" media="all" />
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{ asset ('build/css/owl.carousel.css') }}" />
+    <!-- Default Theme CSS File-->
+    <link href="{{ asset ('build/css/themes/default-theme.css') }}" rel="stylesheet" media="screen,projection" />
+    <!-- Main css File -->
+    <link href="{{ asset ('build/style.css') }}" rel="stylesheet" media="screen,projection" />
+    <link href="{{ asset ('build/app.css') }}" rel="stylesheet" media="screen,projection" />
+    <!-- Font -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+ 
+    {% block body %}{% endblock %}
+	{% block javascripts %}
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/jquery.typeit/4.2.3/typeit.min.js"></script>
+    <script src="{{ asset ('build/js/dactilo.js') }}"></script>
+    <!-- Materialize js -->
+    <script type="text/javascript" src="{{ asset ('build/js/materialize.min.js') }}"></script>
+    <!-- Skill Progress Bar -->
+    <script src="{{ asset ('build/js/appear.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset ('build/js/pro-bars.min.js') }}" type="text/javascript"></script>
+    <!-- Owl slider -->
+    <script src="{{ asset ('build/js/owl.carousel.min.js') }}"></script>
+    <!-- Mixit slider  -->
+    <script src="http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js"></script>
+    <!-- counter -->
+    <script src="{{ asset ('build/js/waypoints.min.js') }}"></script>
+    <script src="{{ asset ('build/js/jquery.counterup.min.js') }}"></script>
+    <!-- Custom Js -->
+    <script src="{{ asset ('build/js/custom.js') }}"></script>
+    <script src="{{ asset ('build/app.js') }}"></script>
+   
+   {% endblock %}
+</body>
+</html>

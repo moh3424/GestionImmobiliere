@@ -1,0 +1,181 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ property.title }}{% endblock%}
+{% block body %}
+<div id="preloader">
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+</div>
+<!-- END PRELOADER -->
+<header id="header" role="banner">
+    <div class="navbar-fixed">
+        <nav>
+            <div class="container">
+                <div class="nav-wrapper">
+                    <!-- LOGO -->
+
+                    <!-- TEXT BASED LOGO -->
+                    <a href="{{path('home')}}" class="brand-logo">MED AGENCE</a>
+                    <!-- Image Based Logo -->
+                    <!-- <a href="index.html" class="brand-logo"><img src="img/logo.jpeg" alt="logo img"></a>  -->
+                    <ul class="right hide-on-med-and-down custom-nav">
+                        <li class="active"><a href="{{path('property.index')}}">Acheter</a></li>
+                        <li><a href="{{path('home')}}">Home</a></li>
+                    </ul>
+                    <!-- For Mobile View -->
+                    <ul id="slide-out" class="side-nav menu-scroll">
+                        <li><a href="blog-archive.html">Acheter</a></li>
+                        <li><a href="index.html">Home</a></li>
+                    </ul>
+                    <a href="#" data-activates="slide-out" class="button-collapse"><i
+                            class="mdi-navigation-menu"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="main-wrapper">
+    <main role="main">
+        <!-- START BLOG BANNER -->
+        <section id="banner">
+            <div class="parallax-container">
+                {% for message in app.flashes('success') %}
+                <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+                <div class="parallax">
+                    <img src="img/blog-header-bg.jpg">
+                </div>
+                <div class="overlay-header">
+                </div>
+                <div class="overlay-content">
+                    <div class="container">
+                        <h1 class="header-title">Awesome Image Post Title</h1>
+                        <div class="meta-media">
+                            <div class="single-meta">
+                                Envoyer par <a href="#">Med Admin</a>
+                            </div>
+                            <div class="single-meta">
+                                Categorie : <a href="#">Web/Design</a>,<a href="#">Graphics</a>
+                            </div>
+                            <div class="single-meta">
+                                <a href="#" class="post-comment"><i
+                                     class="material-icons">comment</i><span>15</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="blog-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m8 l8">
+                        <div class="blog-content">
+                            <div class="blog-image">
+                                {% if property.filename %}
+                                <img src="{{vich_uploader_asset(property, 'imageFile') | imagine_filter('medium')}}"
+                                    alt="">
+                                {% else %}
+                                <img src="{{'/images/properties/blog-empty.jpg' | imagine_filter('medium')}}" alt="">
+                                {% endif %}
+                            </div>
+                            <!-- Start Single Sidebar -->
+                            <h2>Caractéristiques</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th data-field="id">Name</th>
+                                        <th data-field="name">Item Name</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Surface habitable </td>
+                                        <td>{{ property.surface }} m²</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pièces</td>
+                                        <td>{{ property.rooms }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chambres</td>
+                                        <td>{{ property.bedrooms }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Etage</td>
+                                        <td>{{ property.floor }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chaufage</td>
+                                        <td>{{ property.heatType }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Start Sidebar -->
+                    <div class="col s12 m4 l4">
+                        <aside class="sidebar">
+                            <!-- Start Single Sidebar -->
+                            <div class="single-sidebar">
+                                <h3>{{ property.title }}</h3>
+                                <h4>{{ property.rooms }} pièces - {{ property.surface }} m²</h4>
+                                <div class="text-primary"
+                                    style="color: rgb(10, 10, 90);font-weight: bold; font-size: 2rem;">
+                                    {{ property.formattedPrice }} €
+                                </div>
+                                <a href="" class="btn btn-primary" id="contactButton" {% if form.vars.submitted %}
+                                    style="display:none;" {% endif %}>Contacter l'agence</a>
+                                <div id="contactForm" class="mt-4" {% if not form.vars.submitted %}
+                                    style="display:none;" {% endif %}>
+                                    {{ form_start(form) }}
+                                    <div class="row">
+                                        <div class="col s12 m8 l8">
+                                            {{ form_row(form.firstname) }}
+                                        </div>
+                                        <div class="col s12 m8 l8">
+                                            {{ form_row(form.lastname) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m8 l8">
+                                            {{ form_row(form.phone) }}
+                                        </div>
+                                        <div class="col s12 m8 l8">
+                                            {{ form_row(form.email) }}
+                                        </div>
+                                    </div>
+                                    {{ form_rest(form) }}
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Envoyer</button>
+                                    </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                            <div class="single-sidebar">
+                                <h3>Spécificités</h3>
+                                <!-- Single Category -->
+                                <ul class="archives">
+                                    {% for option in property.options %}
+                                    <li class="list-group-item"><a href="#">{{ option.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script>
+    $('#contactButton').click(e => {
+        e.preventDefault();
+        $('#contactForm').slideDown();
+        $('#contactButton').slideUp();
+    });
+</script>
+{% endblock %}

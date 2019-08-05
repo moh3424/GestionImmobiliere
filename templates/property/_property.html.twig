@@ -1,0 +1,26 @@
+<div class="blog-post">
+    <div class="card">
+        <div class="card-image">
+            {% if property.filename %}
+            <img src="{{vich_uploader_asset(property, 'imageFile') | imagine_filter('thumb')}}" alt="">
+            {% else %}
+            <img src="{{'/images/properties/blog-empty.jpg' | imagine_filter('thumb')}}" alt="">
+            {% endif %}
+        </div>
+        <div class="card-content blog-post-content">
+            <h2><a href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title }}</a>
+            </h2>
+            <!-- blog-single.html -->
+            <p class="card-text">{{ property.department }} ({{ property.postalCode }})</p>
+            <div class="text-primary" style="color:blue; font-size: 2rem; font-weight: bold;">
+                {{property.getFormattedPrice() }} €
+            </div>
+        </div>
+        <div class="card-action">
+            <a class="post-comment" href="{{path('login')}}"><i class="material-icons">comment</i><span>15</span></a>
+            <a class="readmore-btn" href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">Read
+                More</a>
+            <!-- blog-single.html -->
+        </div>
+    </div>
+</div>

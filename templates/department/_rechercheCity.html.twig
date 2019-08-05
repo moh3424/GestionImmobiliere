@@ -1,0 +1,56 @@
+<section id="facts">
+    <div class="facts-overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="facts-inner">
+                        <div class="row">
+                            {% for city in cities %}
+                            {% if (cities|length) is divisible by(2) %}
+                            <div class="col s12 m6 l6">
+                                <a href="{{ path('city.property.index', {id: city.id})}}">
+                                    <div class="single-facts waves-effect waves-block waves-light">
+                                        <img src="{{vich_uploader_asset(city, 'imageFile')| imagine_filter('thumb_city_min')}}" alt="img">
+                                        <i class="material">
+                                            {{ city.name }}</i>
+                                        <span class="counter">{{city.numberAgence}}</span>
+                                        <span class="counter-text">Agences</span>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if (cities|length) is divisible by(4) and (cities|length) > 4 %}
+                            <div class="col s12 m3 l6">
+                                <a href="{{ path('city.property.index', {id: city.id})}}">
+                                    <div class="single-facts waves-effect waves-block waves-light">
+                                        <img src="{{vich_uploader_asset(city, 'imageFile'| imagine_filter('thumb_city_min'))}}" alt="img">
+                                        <i class="material">
+                                            {{ city.name }}</i>
+                                        <span class="counter">{{city.numberAgence}}</span>
+                                        <span class="counter-text">Agences</span>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% if (cities|length) is divisible by(3) %}
+                            <div class="col s12 m3 l4">
+                                <a href="{{ path('city.property.index', {id: city.id})}}">
+                                    <div class="single-facts waves-effect waves-block waves-light">
+                                        <img src="{{vich_uploader_asset(city, 'imageFile') | imagine_filter('thumb_city_min')}}"
+                                            alt="img">
+                                        <i class="material">
+                                            {{ city.name }}</i>
+                                        <span class="counter">{{city.numberAgence}}</span>
+                                        <span class="counter-text">Agences</span>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,39 @@
+<div class="container">
+
+    {{ form_start(form) }}
+    <div class="contact-form">
+        <form>
+            <div class="row">
+                <div class="col s12 m3 l3">
+                    <div class="input-field">
+                        {{form_row(form.minSurface)}}
+                    </div>
+
+                </div>
+                <div class="col s12 m3 l3">
+                    <div class="input-field">
+                        {{form_row(form.maxPrice)}}
+                    </div>
+                </div>
+                <div class="col s12 m3 l3">
+
+                    <div class="input-field">
+                        {{form_row(form.department)}}
+                    </div>
+                </div>
+                <div class="col s12 m3 l3">
+
+                    <div class="input-field">
+                        {{form_row(form.options)}}
+                    </div>
+                </div>
+                <button class="right waves-effect btn-flat brand-text submit-btn" type="submit">Recherche
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    {{ form_end(form) }}
+
+</div>

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{property.title}}{% endblock %}
+{% block body %}
+{% include 'Admin/property/_header.html.twig' %}
+<footer id="footer" role="contentinfo">
+    <!-- Start Footer Top -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div class="footer-top-inner">
+                        <h2 class="title">Editer le bien</h2>
+                        <span>
+                            <h3>{{property.title}}</h3>
+                        </span>
+                        <div class="contact">
+                            <div class="row">
+
+                                {{ include ('admin/property/_form.html.twig', {button: 'Editer'}) }}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Start Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="footer-inner">
+                        <!-- Bottom to Up Btn -->
+                        <button class="btn-floating btn-large up-btn"><i
+                                class="mdi-navigation-expand-less"></i></button>
+                        <p class="design-info">Poroduit par <a href="">Med Yessad</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
